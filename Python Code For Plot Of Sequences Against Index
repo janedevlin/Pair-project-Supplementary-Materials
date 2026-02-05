@@ -1,0 +1,61 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def fibonacci(N):
+    f = np.zeros(N)
+    f[0] = 1
+    f[1] = 1
+    for n in np.arange(N - 2):
+        f[n + 2] = f[n + 1] + f[n]
+    return f
+
+def lucas(N):
+    l = np.zeros(N)
+    l[0] = 1
+    l[1] = 3
+    for n in np.arange(N - 2):
+        l[n + 2] = l[n + 1] + l[n]
+    return l
+
+def tribonacci(N):
+    t = np.zeros(N)
+    t[0] = 1
+    t[1] = 1
+    t[2] = 2
+    for n in np.arange(N - 3):
+        t[n + 3] = t[n + 2] + t[n + 1] + t[n]
+    return t
+
+def jacobsthal(N):
+    j = np.zeros(N)
+    j[0] = 1
+    j[1] = 1
+    for n in np.arange(N - 2):
+        j[n + 2] = j[n + 1] + 2*j[n]
+    return j
+
+def pell(N):
+    p = np.zeros(N)
+    p[0] = 1
+    p[1] = 1
+    for n in np.arange(N - 2):
+        p[n + 2] = 2*p[n + 1] + p[n]
+    return p
+
+x = np.linspace(1, 10, 10)
+yf = fibonacci(10)
+yl = lucas(10)
+yt = tribonacci(10)
+yj = jacobsthal(10)
+yp = pell(10)
+
+plt.figure()
+plt.plot(x, yf, 'o-', label = 'Fibonacci')
+plt.plot(x, yl, 'o-', label = 'Lucas')
+plt.plot(x, yt, 'o-', label = 'Tribonacci')
+plt.plot(x, yj,'o-', label = 'Jacobsthal')
+plt.plot(x, yp, 'o-', label = 'Pell')
+plt.xlabel('n')
+plt.ylabel('$F_n$')
+plt.legend()
+plt.show()
